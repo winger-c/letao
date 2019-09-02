@@ -1,0 +1,43 @@
+.container {
+    padding: 10px;
+}
+
+.container .search {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #006699;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.search input[type='text'] {
+    width: 100%;
+    height: 28px;
+    padding-right: 70px;
+    margin: 0;
+}
+
+.search input[type='button'] {
+    width: 60px;
+    height: 28px;
+    background: #006699;
+    color: #FFF;
+    border: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 0;
+}
+
+.history-top {
+    color: #8f8f94;
+    font-size: 14px;
+}
+
+.history-top .title {
+
+}
+
+.history-top .clear {
+    font-size: 14px;
+}
