@@ -33,6 +33,9 @@ $(function () {
                     setTimeout(function () {
                         location.href = 'login.html';
                     }, 2000)
+                }else{
+                    console.log(res)
+                    mui.toast('修改失败请核实后再来！');
                 }
             }
         });

@@ -30,9 +30,15 @@ $(function () {
                 $('#login-btn').html('正在登录...');
             },
             success: function (res) {
-                mui.toast('登录成功');
-                $('#login-btn').html('登录');
-                console.log(res);
+               if(res.success==true){
+                   mui.toast('登录成功');
+                   $('#login-btn').html('登录');
+                   console.log(res);
+               }else{
+                   mui.toast('账号或密码错误');
+                   console.log(res);
+                   $('#login-btn').html('登录');
+               }
                 setTimeout(function () {
                     location.href = 'user.html'
                 }, 2000);
