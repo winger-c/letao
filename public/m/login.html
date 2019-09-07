@@ -3,25 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>hello</title>
+    <title>登录</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css">
     <link rel="stylesheet" type="text/css" href="css/base.css">
-    <link rel="stylesheet" type="text/css" href="css/search.css">
     <link rel="stylesheet" type="text/css" href="assets/fontAwesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/form.css">
     <script src="assets/mui/js/mui.min.js" type="text/javascript"></script>
+    <script src="js/public.js"></script>
     <script src="assets/zepto/zepto.min.js"></script>
-    <script src="assets/artTemplate/template-native.js"></script>
-    <script src="js/search.js"></script>
-    <script src="./js/public.js"></script>
+    <script src="js/login.js"></script>
 </head>
 
 <body>
 <header class="mui-bar mui-bar-nav my-header">
-    <h1 class="mui-title">搜索中心</h1>
+    <a class="mui-icon mui-icon-search mui-pull-right" href="search.html"></a>
+    <h1 class="mui-title">登录</h1>
 </header>
 <nav class="mui-bar mui-bar-tab footer my-footer">
-    <a class="mui-tab-item mui-active" href="index.html">
+    <a class="mui-tab-item" href="index.html">
         <span class="mui-icon mui-icon-home"></span>
         <span class="mui-tab-label">首页</span>
     </a>
@@ -39,27 +39,21 @@
     </a>
 </nav>
 <div class="mui-content">
-    <div class="container">
-        <div class="search">
-            <input type="text" placeholder="搜索您喜欢的商品">
-            <input type="button" value="搜索" id="search-btn">
+    <form class="mui-input-group">
+        <div class="mui-input-row">
+            <label>用户名</label>
+            <input type="text" class="mui-input-clear" placeholder="请输入用户名" name="username">
         </div>
-        <div class="history-top mui-clearfix">
-            <span class="title mui-pull-left">搜索历史</span>
-            <span class="clear mui-pull-right mui-icon mui-icon-trash" id="clearBtn">清空历史</span>
+        <div class="mui-input-row">
+            <label>密码</label>
+            <input type="password" class="mui-input-password" placeholder="请输入密码" name="password">
         </div>
-        <ul class="mui-table-view" id="history-box">
-
-<!--            <li class="mui-table-view-cell">Item 2</li>-->
-<!--            <li class="mui-table-view-cell">Item 3</li>-->
-        </ul>
-    </div>
+        <div class="mui-button-row">
+            <button id="login-btn" type="button" class="mui-btn mui-btn-primary mui-col-sm-10 mui-col-xs-10">登录</button>
+        </div>
+    </form>
+    <a href="register.html" class="login-now">免费注册</a>
 </div>
 </body>
-<script id="historyTpl" type="text/template">
-    <% for(var i=0;i<result.length;i++){ %>
-        <li class="mui-table-view-cell"><%=result[i]%></li>
-    <% } %>
-</script>
 
 </html>

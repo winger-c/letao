@@ -22,9 +22,10 @@ a {
 	color: #FFF;
 }
 
-.my-header .mui-icon-search{
+.my-header .mui-icon{
 	color: #FFF;
 }
+
 
 .my-footer{
 	background: #006699;
@@ -131,12 +132,11 @@ a {
 .product ul li p span:first-child {
 	color: #f20000;
 	padding-right: 2px;
-	font-size: 18px;
+	font-size: 16px;
 }
 
 .product ul li p span:last-child {
 	text-decoration: line-through;
-	padding-left;
 }
 
 .product ul li .buy-now{
