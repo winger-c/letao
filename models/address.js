@@ -8,11 +8,12 @@ function Address(address) {
   this.isDelete = address.isDelete;
   this.recipients = address.recipients;
   this.postcode = address.postcode;
+  this.receiverMobile=address.receiverMobile;
 };
 
 Address.addAddress = function (address, callback) {
-  var selectSql = 'insert into address (id,userId,address,addressDetail,isDelete,recipients,postcode)  values (null,?,?,?,1,?,?)';
-  db.query(selectSql, [address.userId, address.address, address.addressDetail,address.recipients,address.postcode], function (err, result) {
+  var selectSql = 'insert into address (id,userId,address,addressDetail,isDelete,recipients,postcode,mobile)  values (null,?,?,?,1,?,?,?)';
+  db.query(selectSql, [address.userId, address.address, address.addressDetail,address.recipients,address.postcode,address.receiverMobile], function (err, result) {
     console.log(err);
     if (err) {
       return callback(err);

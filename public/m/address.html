@@ -9,8 +9,10 @@
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <link rel="stylesheet" type="text/css" href="assets/fontAwesome/css/font-awesome.min.css">
     <script src="assets/mui/js/mui.min.js" type="text/javascript"></script>
+    <script src="assets/artTemplate/template-native.js"></script>
     <script src="assets/zepto/zepto.min.js"></script>
     <script src="js/public.js"></script>
+    <script src="js/address.js"></script>
 </head>
 <style>
     .mui-media-body{
@@ -25,6 +27,7 @@
         font-weight: 600;
         color: skyblue;
     }
+    * { touch-action: pan-y; }
 </style>
 <body>
 <header class="mui-bar mui-bar-nav my-header">
@@ -50,20 +53,38 @@
     </a>
 </nav>
 <div class="mui-content">
-    <a href="addAddress.html" class="addAddress">添加收货地址</a>
-    <ul class="mui-table-view">
-        <li class="mui-table-view-cell mui-media">
-            <a href="javascript:;">
-                <div class="mui-media-body">
-                    邮编：101010 收货人：前任女友
-                    <p class='mui-ellipsis'>
-                    详细的地址
-                    </p>
-                </div>
-            </a>
-        </li>
+    <a href="addAddress.html" class="addAddress">添加收货地址 <span class="mui-icon mui-icon-plus"></span></a>
+    <ul class="mui-table-view" id="address-box">
+<!--        <li class="mui-table-view-cell mui-transitioning mui-selected">-->
+<!--            <div class="mui-slider-right mui-disabled mui-selected">-->
+<!--                <a class="mui-btn mui-btn-red" style="transform: translate(-88px, 0px);">删除</a>-->
+<!--            </div>-->
+<!--            <div class="mui-slider-handle" style="transform: translate(-88px, 0px);">-->
+<!--                左滑显示删除按钮-->
+<!--            </div>-->
+<!--        </li>-->
     </ul>
 </div>
 </body>
-
+<script type="text/template" id="addressTpl">
+    <%for(var i=0;i<result.length;i++){ %>
+    <li class="mui-table-view-cell mui-media">
+        <div class="mui-slider-right mui-disabled">
+            <a href="javascript:void(0);" class="mui-btn mui-btn-blue edit-address" style="transform: translate(0px, 0px);" data-id="<%=result[i].id %>">编辑</a>
+            <a href="javascript:void(0);" class="mui-btn mui-btn-red delete-btn" style="transform: translate(0px, 0px);" data-id="<%=result[i].id %>">删除</a>
+        </div>
+        <div class="mui-media-body mui-slider-handle">
+            邮编：<%=result[i].postCode %>
+            收货人：<%=result[i].recipients %>
+        <p class='mui-ellipsis'>
+            <%=result[i].address %>
+            <%=result[i].addressDetail %>
+        </p>
+         <p class='mui-ellipsis'>
+            联系电话：<%=result[i].mobile %>
+          </p>
+        </div>
+    </li>
+    <% } %>
+</script>
 </html>
