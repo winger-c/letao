@@ -12,14 +12,27 @@
     <script src="assets/zepto/zepto.min.js"></script>
     <script src="js/public.js"></script>
 </head>
-
+<style>
+    .mui-media-body{
+        font-size: 14px;
+        font-size: 1.0rem;
+    }
+    .addAddress{
+        display:block;
+        width: 100%;
+        padding:10px;
+        text-align: center;
+        font-weight: 600;
+        color: skyblue;
+    }
+</style>
 <body>
 <header class="mui-bar mui-bar-nav my-header">
     <a class="mui-icon mui-icon-search mui-pull-right" href="search.html"></a>
     <h1 class="mui-title">收货地址</h1>
 </header>
 <nav class="mui-bar mui-bar-tab footer my-footer">
-    <a class="mui-tab-item mui-active" href="index.html">
+    <a class="mui-tab-item" href="index.html">
         <span class="mui-icon mui-icon-home"></span>
         <span class="mui-tab-label">首页</span>
     </a>
@@ -37,7 +50,19 @@
     </a>
 </nav>
 <div class="mui-content">
-
+    <a href="addAddress.html" class="addAddress">添加收货地址</a>
+    <ul class="mui-table-view">
+        <li class="mui-table-view-cell mui-media">
+            <a href="javascript:;">
+                <div class="mui-media-body">
+                    邮编：101010 收货人：前任女友
+                    <p class='mui-ellipsis'>
+                    详细的地址
+                    </p>
+                </div>
+            </a>
+        </li>
+    </ul>
 </div>
 </body>
 
