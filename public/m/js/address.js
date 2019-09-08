@@ -69,6 +69,6 @@ $(function () {
             }
         }
 
-        location.href = 'addAddress.html';
+        location.href = 'addAddress.html?isEdit=1';
     });
 });

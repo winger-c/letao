@@ -30,7 +30,8 @@ router.post("/updateAddress", function (req, res) {
         address: req.body.address ? req.body.address : '',
         addressDetail: req.body.addressDetail ? req.body.addressDetail : '',
         recipients: req.body.recipients ? req.body.recipients : '',
-        postcode: req.body.postcode ? req.body.postcode : ''
+        postcode: req.body.postcode ? req.body.postcode : '',
+        receiverMobile: req.body.receiverMobile ? req.body.receiverMobile : ''
     })
     Address.updateAddress(address, function (err, data) {
         if (err) return res.send({ "error": 403, "message": "数据库异常！" });

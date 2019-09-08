@@ -1,4 +1,24 @@
 $(function () {
+
+    var isEdit =Number(getParamsByUrl(location.href, 'isEdit'));//获取地址栏的此标记用来区分编辑和添加
+    if (isEdit) {
+        //进行的是编辑操作
+        if (localStorage.getItem('editAddress')) {
+            var address = JSON.parse(localStorage.getItem('editAddress'));
+            $("[name='receiver']").val(address.recipients);
+            $("[name='postCode']").val(address.postCode);
+            $("[name='area']").val(address.address);
+            $("[name='detailPlace']").val(address.addressDetail);
+            $("[name='receiverMobile']").val(address.mobile);
+        }
+    } else {
+        //进行的是添加操作
+        $("[name='receiver']").val('');
+        $("[name='postCode']").val('');
+        $("[name='area']").val('');
+        $("[name='detailPlace']").val('');
+        $("[name='receiverMobile']").val('');
+    }
     //创建picker选择器
     var picker = new mui.PopPicker({layer: 3});
 
@@ -32,32 +52,36 @@ $(function () {
             mui.toast('请输入联系电话');
             return;
         }
+        var data={
+            address: area,
+            addressDetail: detailPlace,
+            recipients: receiver,
+            postcode: postCode,
+            receiverMobile: receiverMobile
+        }
+        if(isEdit){
+            var url='/address/updateAddress';
+            data.id=address.id;
+        }else{
+            var url='/address/addAddress';
+        }
         $.ajax({
-            url: '/address/addAddress',
+            url: url,
             type: 'post',
-            data: {
-                address: area,
-                addressDetail: detailPlace,
-                recipients: receiver,
-                postcode: postCode,
-                receiverMobile: receiverMobile
-            },
+            data: data,
             success: function (res) {
                 if (res.success) {
-                    mui.toast('添加成功');
+                    if(isEdit){
+                        mui.toast('修改成功');
+                    }else{
+                        mui.toast('添加成功');
+                    }
                     setTimeout(function () {
                         location.href = 'address.html';
-                    },2000);
+                    }, 2000);
                 }
             }
         });
     });
-    if(localStorage.getItem('editAddress')){
-        var address=JSON.parse(localStorage.getItem('editAddress'));
-        $("[name='receiver']").val(address.recipients);
-        $("[name='postCode']").val(address.postCode);
-        $("[name='area']").val(address.address);
-        $("[name='detailPlace']").val(address.addressDetail);
-        $("[name='receiverMobile']").val(address.mobile);
-    }
+
 });

@@ -52,6 +52,14 @@ Address.updateAddress = function (address, callback) {
     selectSql += ' ,postcode=? ';
     param[param.length] = address.postcode;
   }
+  if (address.receiverMobile && param.length == 0) {
+    selectSql += ' mobile=? ';
+    param[param.length] = address.receiverMobile;
+  }
+  else if (address.receiverMobile && param.length != 0) {
+    selectSql += ' ,mobile=? ';
+    param[param.length] = address.receiverMobile;
+  }
      selectSql += ' WHERE id=? ';
    param[param.length] = address.id;
   db.query(selectSql,param, function (err, res) {
