@@ -36,7 +36,7 @@ $(function () {
     */
 
     //1.一级分类添加点击事件
-    $('#links').on('click', 'a', function () {
+    $('#links').on('tap', 'a', function () {
 
         //2.在事件处理函数中获取到一级分类：获取当前点击的一级分类的id
         var id = $(this).attr('data-id');
@@ -45,6 +45,9 @@ $(function () {
 
         //3.调用二级分类的接口获取对应的数据
         getSecondCategory(id);
+    });
+    $('#myCart').on('tap', function () {
+        location.href = 'cart.html'
     });
 });
 

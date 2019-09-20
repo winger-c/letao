@@ -50,7 +50,7 @@ $(function () {
     /*
     * 接口获取认证码
     * */
-    $('#getCode').on('click', function () {
+    $('#getCode').on('tap', function () {
         $.ajax({
             url: '/user/vCode',
             type: 'get',

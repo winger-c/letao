@@ -10,7 +10,9 @@
     <link rel="stylesheet" type="text/css" href="assets/fontAwesome/css/font-awesome.min.css">
     <script src="assets/mui/js/mui.min.js" type="text/javascript"></script>
     <script src="assets/zepto/zepto.min.js"></script>
+    <script src="assets/artTemplate/template-native.js"></script>
     <script src="js/public.js"></script>
+    <script src="js/cart.js"></script>
 </head>
 
 <body>
@@ -37,8 +39,55 @@
     </a>
 </nav>
 <div class="mui-content">
-    <div style="font-size: 30px;margin-top:50%;text-align: center;color: #ff704f;">空空如也</div>
+    <div class="mui-scroll">
+        <ul class="mui-table-view" id="cartBox"></ul>
+        <h4 class="total">订单总额：¥110</h4>
+    </div>
 </div>
+<script id="cartTpl" type="text/html">
+    <% for(var i=0;i<data.length;i++){ %>
+    <li class="mui-table-view-cell mui-transitioning mui-media">
+        <div class="mui-slider-right mui-disabled">
+            <span class="mui-btn mui-btn-primary editBtn" data-id="<%=data[i].id %>">编辑</span>
+            <span class="mui-btn mui-btn-red deleteBtn" data-id="<%=data[i].id %>">删除</span>
+        </div>
+        <div class="mui-slider-handle">
+            <a href="javascript:;">
+                <img class="mui-media-object mui-pull-left" src="images/detail.jpg">
+                <div class="mui-media-body">
+                    <p>
+                        <%=data[i].proName%>
+                    </p>
+                    <div class="mui-row">
+                        <div class="mui-col-sm-6">
+                            <input type="checkbox">
+                            <span class="price-1">¥<%=data[i].price %></span>
+                            <del class="price-2 gray">¥<%=data[i].oldPrice %></del>
+                        </div>
+                        <div class="mui-col-sm-4">
+                            <span class="gray">鞋码：<%=data[i].size %></span>
+                        </div>
+                        <div class="mui-col-sm-2">
+                            <span class="gray">×<%=data[i].num %></span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </li>
+    <% } %>
+</script>
+<!--<script id="detailTpl" type="text/html">-->
+    <!--<div class="detail-size">-->
+        <!--尺码：-->
+        <!--<% for(var i=0;i<data.customSize.length;i++){ %>-->
+        <!--<span class="<%=data.size==data.customSize[i]?'active':''%>"><%=data.customSize[i] %></span>-->
+        <!--<% } %>-->
+    <!--</div>-->
+    <!--<div class="detail-num">-->
+        <!--数量：<span class="reduce">-</span><input type="text" class="num" value="<%=data.num %>"><span class="plus">+</span>-->
+    <!--</div>-->
+<!--</script>-->
 </body>
 
 </html>
