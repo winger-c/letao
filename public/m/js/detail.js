@@ -40,7 +40,7 @@ $(function () {
         // alert(1)
         var oInp = $('#inp');
         var num = oInp.val();
-        num > 0 && num < limite ? num-- : num;
+        num > 1 && num < limite ? num-- : num;//商品详情页的所选数量必须大于等于1
         buyNum=num;
         oInp.val(num);
     });
